@@ -3,14 +3,15 @@ let comp = 0;
 const computerSelection = function computerPlay(){
     let compChoice = ["rock", "paper", "scissors"];
     let num = Math.floor(Math.random() * 3);
-    console.log(compChoice[num]);
     return compChoice[num];
 }
 
 const playerSelection = function playerSelection(){
     let playerChoice = prompt("Rock, Paper, or Scissors?");
+    if(playerChoice == null){
+        console.log("hey")
+    }
     let choice = playerChoice.trim().toLowerCase();
-    console.log(choice);
     return choice;
 }
 
@@ -33,7 +34,9 @@ function playRound(playerSelection, computerSelection){
     }else if(playerSelection === "scissors" && computerSelection === "paper"){
         console.log("Scissors wins!");
         player++;
-    }else {
+    }else if(playerSelection === "" || playerSelection === null){
+        console.log("Wrong Input!");
+    }else{
         console.log("It's a tie!");
     }
 }
